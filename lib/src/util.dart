@@ -46,7 +46,7 @@ class Util {
     return ffi.using((arena) {
       final ptr = arena<ffi.Uint8>(bytes);
       final len = call(() => readFunc(ptr));
-      return Uint8List.fromList(ptr.asTypedList(len));
+      return Uint8List.fromList(ptr.asTypedList(len < 0 ? 0 : len));
     });
   }
 
